@@ -1,0 +1,16 @@
+<div class="nested-fields text-center text-white">
+  <div class="field">
+    <%= f.label :Telefone %><br>
+    <%= f.text_field :numero, size: 19, placeholder: "Ex. (00) 0000-00000", 'data-mask': '(00) 0000-00000'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Tipo %><br>
+    <%= f.select :tipo, ["Residencial","Celular pessoal","Celular corporativo"], class:"form-select"%>
+  </div>
+
+  <div class="field">
+    <%= link_to_remove_association('Remover', f, class:"btn btn-outline-danger") %>  
+  </div>
+  <br>
+</div>

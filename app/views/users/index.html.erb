@@ -1,0 +1,28 @@
+<br>
+<h4 class="text-center text-white"><%= pluralize(@users.size, "usuário cadastrado", "Usuários cadastrados")%> </h4>
+<h5 class="text-center text-white">Clique no nome do usuário para visualizar</h5>
+
+<table class="table text-white">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>CPF</th>
+      <th>Gênero</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.nome, user_path(user), style:"text-decoration:none", class:"text-white" %></td>
+        <td><%= user.idade %></td>
+        <td><%= user.cpf %></td>
+        <td><%= user.genero.gnome %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<a href ="http://localhost:3000/users/new" class="btn btn-outline-primary text-white">Novo cadastro</a>

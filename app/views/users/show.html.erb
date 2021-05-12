@@ -1,0 +1,44 @@
+<br>
+
+<article>
+  <h3 class="text-center text-white"> Dados pessoais </h3>
+  <h5 class="text-center text-white">
+    Nome: <%= @user.nome%>
+  </h5>
+
+  <h5 class="text-center text-white">
+    Idade: <%= @user.idade%>
+  </h5>
+
+  <h5 class="text-center text-white">
+    CPF: <%= @user.cpf%>
+  </h5>
+
+  <h5 class="text-center text-white">
+    Gênero: <%= @user.genero.gnome%>
+  </h5>
+  <br>
+
+  <h3 class="text-center text-white"> Contatos </h3>
+  <% @user.contatos.each do |c| %>
+    <h5 class="text-center text-white">
+      Tipo: <%= c.tipo%>
+    </h5>
+
+    <h5 class="text-center text-white">
+      Número: <%= c.numero%>
+    <br>
+    <br>
+    </h5>
+  <% end %>
+  <br>
+  
+  <div class="text-center">
+    <p> 
+      <%= link_to 'Voltar para usuários', users_path, class:"btn btn-outline-info" %>
+      <%= link_to 'Editar dados', edit_user_path(@user), class:"btn btn-outline-warning" %>
+      <%= link_to 'Deletar usuário', (@user), method: :delete, data:{confirm: "Deseja deletar este usuário?"}, class:"btn btn-outline-danger" %>
+    </p>
+  </div>
+
+</article>

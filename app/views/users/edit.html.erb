@@ -1,0 +1,30 @@
+<%= form_for(@user) do |f|%>
+  <br>
+  <div>
+    <p class="text-center text-white"> <%= f.label :Nome %><br></p>
+    <p class="text-center"> <%= f.text_field :nome %></p>
+
+    <p class="text-center text-white"> <%= f.label :Idade %><br> </p>
+    <p class="text-center"> <%= f.text_field :idade, 'data-mask': '000' %></p>
+
+    <p class="text-center text-white"> <%= f.label :CPF %><br> </p>
+    <p class="text-center">  <%= f.text_field :cpf, placeholder: "Ex: 000.000.000-00", 'data-mask': '000.000.000-00' %></p>
+
+    <p class="text-center text-white"> <%= f.label :Gênero %><br> </p>
+    <p class="text-center"> <%= f.collection_select :genero_id, Genero.all, :id, :gnome %></p>
+
+    <div id="contatos" class="text-center">
+      <%= f.fields_for :contatos do |contatos_fields| %>
+        <%= render partial: "contato_fields", locals: { f: contatos_fields }%>
+      <% end %>
+      <br>
+      <%= link_to_add_association('Adicionar Telefone', f, :contatos, class:"btn btn-outline-light") %> 
+    </div>
+    <br>
+
+    <p class="text-center">
+      <%= f.submit 'Salvar alterações', class:"btn btn-outline-light" %>
+      <%= link_to 'Voltar para o usuário', user_path, class:"btn btn-outline-info" %>
+    </p>
+<% end %>
+
